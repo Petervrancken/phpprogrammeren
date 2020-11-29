@@ -19,34 +19,28 @@
 <div class="container">
     <div class="row">
         <?php
-        error_reporting(E_ALL);
-        ini_set('display_errors', 1);
 
-        $servername = "localhost";
-        $username = "root";
-        $password = "Mywampstack1988";
-        $dbname = "steden";
+        require_once "connection.php";
 
-        $conn = new mysqli($servername, $username, $password, $dbname);
-
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
 
         $sql = "select * from images";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0)
         {
-            // output data of each row
+
             while($row = $result->fetch_assoc())
             {
-                echo $row["img_id"] . "<br>";
-                echo $row["img_filename"] . "<br>";
-                echo $row["img_title"] . "<br>";
-                echo "w:" . $row["img_width"] . "<br>";
-                echo "h:" . $row["img_height"] . "<br>";
-                echo "<br>";
+                $city=$row["img_title"];
+                $image=$row["img_filename"];
+                $width=$row["img_width"];
+                $height=$row["img_height"];
+                echo "<div class='col-sm-4'>";
+                echo "<h3>$city</h3>";
+                echo "<p>$width - $height pixels</p>";
+                echo "<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>";
+                echo "<img src='../images/$image.jpg' alt='photokes'></img>";
+                echo "</div>";
             }
         }
         else
@@ -55,24 +49,6 @@
         }
 
         $conn->close();
-
-
-
-
-
-        $images = array("stad1"=>"Amsterdam", "stad2"=>"New York", "stad3"=>"Barcelona");
-
-        function imagesincolumns($imagescity){
-            foreach($imagescity as $image => $city){
-                echo "<div class='col-sm-4'>";
-                echo "<h3>$city</h3>";
-                echo "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>";
-                echo "<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>";
-                echo "<img src='../images/$image.jpg' alt='photokes'></img>";
-                echo "</div>";
-            }
-        }
-        echo imagesincolumns($images);
         ?>
     </div>
 </div>
