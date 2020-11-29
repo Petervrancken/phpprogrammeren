@@ -22,6 +22,44 @@
         error_reporting(E_ALL);
         ini_set('display_errors', 1);
 
+        $servername = "localhost";
+        $username = "root";
+        $password = "Mywampstack1988";
+        $dbname = "steden";
+
+        $conn = new mysqli($servername, $username, $password, $dbname);
+
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        $sql = "select * from images";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0)
+        {
+            // output data of each row
+            while($row = $result->fetch_assoc())
+            {
+                echo $row["img_id"] . "<br>";
+                echo $row["img_filename"] . "<br>";
+                echo $row["img_title"] . "<br>";
+                echo "w:" . $row["img_width"] . "<br>";
+                echo "h:" . $row["img_height"] . "<br>";
+                echo "<br>";
+            }
+        }
+        else
+        {
+            echo "No records found";
+        }
+
+        $conn->close();
+
+
+
+
+
         $images = array("stad1"=>"Amsterdam", "stad2"=>"New York", "stad3"=>"Barcelona");
 
         function imagesincolumns($imagescity){
@@ -30,7 +68,7 @@
                 echo "<h3>$city</h3>";
                 echo "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>";
                 echo "<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>";
-                echo "<img width='100%' height='180px' src='../images/$image.jpg' alt='photokes'></img>";
+                echo "<img src='../images/$image.jpg' alt='photokes'></img>";
                 echo "</div>";
             }
         }
