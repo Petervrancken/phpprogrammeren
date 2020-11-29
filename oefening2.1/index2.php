@@ -4,7 +4,8 @@
     <title>Bootstrap Example</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
@@ -18,6 +19,9 @@
 <div class="container">
     <div class="row">
         <?php
+        error_reporting(E_ALL);
+        ini_set('display_errors', 1);
+
         $images = array("stad1"=>"Amsterdam", "stad2"=>"New York", "stad3"=>"Barcelona");
 
         function imagesincolumns($imagescity){
@@ -26,7 +30,7 @@
                 echo "<h3>$city</h3>";
                 echo "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>";
                 echo "<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>";
-                echo "<img width='100%' height='180px' src='images/$image.jpg' alt='photokes'></img>";
+                echo "<img width='100%' height='180px' src='../images/$image.jpg' alt='photokes'></img>";
                 echo "</div>";
             }
         }
