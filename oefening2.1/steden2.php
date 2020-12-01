@@ -23,35 +23,24 @@
         require_once "connection.php";
 
 
-        $sql = "select * from images";
-        $result = $conn->query($sql);
+        $rows = GetData( "select * from images" );
 
 
-        if ($result->num_rows > 0)
+        foreach ($rows as $row)
         {
-
-            while($row = $result->fetch_assoc())
-            {
-                $city=$row["img_title"];
-                $image=$row["img_filename"];
-                $width=$row["img_width"];
-                $height=$row["img_height"];
-                $img_id=$row["img_id"];
-                echo "<div class='col-sm-4'>";
-                echo "<h3>$city</h3>";
-                echo "<p>$width - $height pixels</p>";
-                echo "<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>";
-                echo "<img width='100%' src='../images/$image.jpg' alt='photokes'></img>";
-                echo '<a href="stad.php?img_id=' . $row["img_id"] . '">Meer informatie</a>';
-                echo "</div>";
-            }
+            $city=$row["img_title"];
+            $image=$row["img_filename"];
+            $width=$row["img_width"];
+            $height=$row["img_height"];
+            $img_id=$row["img_id"];
+            echo "<div class='col-sm-4'>";
+            echo "<h3>$city</h3>";
+            echo "<p>$width - $height pixels</p>";
+            echo "<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>";
+            echo "<img width='100%' src='../images/$image.jpg' alt='photokes'></img>";
+            echo '<a href="stad.php?img_id=' . $row["img_id"] . '">Meer informatie</a>';
+            echo "</div>";
         }
-        else
-        {
-            echo "No records found";
-        }
-
-        $conn->close();
         ?>
     </div>
 </div>
