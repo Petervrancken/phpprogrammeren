@@ -39,7 +39,7 @@
                 echo "<h3>$city</h3>";
                 echo "<p>$width - $height pixels</p>";
                 echo "<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>";
-                echo "<img src='../images/$image.jpg' alt='photokes'></img>";
+                echo "<img src='./images/$image.jpg' alt='photokes'></img>";
                 echo "</div>";
             }
         }

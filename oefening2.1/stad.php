@@ -33,11 +33,11 @@
             $image=$row["img_filename"];
             $width=$row["img_width"];
             $height=$row["img_height"];
-            echo "<div class='col-sm-4'>";
+            echo "<div class='col-sm-12'>";
             echo "<h3>$city</h3>";
             echo "<p>filename: $image.jpg</p>";
             echo "<p>$width - $height pixels</p>";
-            echo "<img class='img-fluid' style='width: 75%' src='../images/$image.jpg' alt='photokes'>";
+            echo "<img class='img-fluid' style='width: 75%' src='./images/$image.jpg' alt='photokes'>";
             echo '<a href="steden2.php?img_id=' . $row["img_id"] . '">Naar hoofdpagina</a>';
             echo "</div>";}
         ?>
