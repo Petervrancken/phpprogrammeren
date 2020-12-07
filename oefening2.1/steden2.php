@@ -37,7 +37,7 @@
             echo "<h3>$city</h3>";
             echo "<p>$width - $height pixels</p>";
             echo "<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>";
-            echo "<img width='100%' src='./images/$image.jpg' alt='photokes'></img>";
+            echo "<img class='img-fluid' width='100%' src='./images/$image.jpg' alt='photokes'></img>";
             echo '<a href="stad.php?img_id=' . $row["img_id"] . '">Meer informatie</a>';
             echo "</div>";
         }

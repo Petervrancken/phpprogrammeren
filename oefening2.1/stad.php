@@ -37,7 +37,7 @@
             echo "<h3>$city</h3>";
             echo "<p>filename: $image.jpg</p>";
             echo "<p>$width - $height pixels</p>";
-            echo "<img class='img-fluid' style='width: 75%' src='./images/$image.jpg' alt='photokes'>";
+            echo "<img class='img-fluid' style='width: 100%' src='./images/$image.jpg' alt='photokes'>";
             echo '<a href="steden2.php?img_id=' . $row["img_id"] . '">Naar hoofdpagina</a>';
             echo "</div>";}
         ?>
