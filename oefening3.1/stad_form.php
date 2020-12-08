@@ -12,8 +12,12 @@ PrintJumbo();
 
 
 <div class="container">
+    <?php
+    PrintForm();
+    ?>
     <div class="row">
         <?php
+
 
         if ( ! is_numeric( $_GET['img_id']) ) die("Ongeldig argument " . $_GET['img_id'] . " opgegeven");
 

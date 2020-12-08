@@ -1,4 +1,9 @@
 <?php
+
+function PrintForm(){
+    $from = file_get_contents("templates/form.html");
+    print $from;
+}
 function PrintHead()
 {
     $head = file_get_contents("templates/head.html");
@@ -14,7 +19,7 @@ function PrintJumbo($title = "City dreams", $slogan = "Travel to your favorite l
         print $jumbo;
     }
     else{
-        $title = "Invullen";
+        $title = "Bewerk deze afbeelding";
         $jumbo = file_get_contents("templates/jumbotron.html");
         $jumbo = str_replace("@citytitle@", $title, $jumbo);
         $jumbo = str_replace("@slogan@", '', $jumbo);
