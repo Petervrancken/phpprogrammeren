@@ -12,9 +12,6 @@ PrintJumbo();
 
 
 <div class="container">
-    <?php
-    PrintForm();
-    ?>
     <div class="row">
         <?php
 
@@ -24,19 +21,11 @@ PrintJumbo();
         $rows = GetData( "select * from images where img_id=" . $_GET['img_id'] );
 
         //get template
-        $template = file_get_contents("templates/columnstad.html");
+        $template = file_get_contents("templates/form.html");
 
-        //merge
-        foreach ( $rows as $row )
-        {
-            $output = $template;
+        $merge = MergeViewWithData($template, $rows);
+        print $merge;
 
-            foreach( array_keys($row) as $field )
-            {
-                $output = str_replace( "@$field@", $row["$field"], $output );
-            }
-            print $output;
-        }
 
         ?>
 
