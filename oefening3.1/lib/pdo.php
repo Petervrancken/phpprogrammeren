@@ -1,8 +1,12 @@
 <?php
+
+// deze code geeft een error weer in je browers als je iets verkeerd doet
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 
+
+// deze functie haalt data uit je databank
 function GetData( $sql )
 {
     $servername = "localhost";

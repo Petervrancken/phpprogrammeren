@@ -1,35 +1,33 @@
 <?php
 
-function PrintForm(){
-    $from = file_get_contents("templates/form.html");
-    print $from;
+
+//functie om titel en slogan aan te passen in jumbotron html.
+function PrintJumbo( $title = "", $subtitle = "" )  // titel word in functie aangepast zie steden en stad.
+{
+    $jumbo = file_get_contents("templates/jumbotron.html");
+
+    $jumbo = str_replace( "@citytitle@", $title, $jumbo );
+    $jumbo = str_replace( "@slogan@", $subtitle, $jumbo );
+
+    print $jumbo;
 }
+
+
+
+
+// functie om de head te printen van head.html
 function PrintHead()
 {
     $head = file_get_contents("templates/head.html");
     print $head;
 }
 
-function PrintJumbo($title = "City dreams", $slogan = "Travel to your favorite location!")
-{
-    if ($_SERVER["PHP_SELF"] == '/phpprogrammeren/oefening3.1/steden2.php') {
-        $jumbo = file_get_contents("templates/jumbotron.html");
-        $jumbo = str_replace("@citytitle@", $title, $jumbo);
-        $jumbo = str_replace("@slogan@", $slogan, $jumbo);
-        print $jumbo;
-    }
-    else{
-        $title = "Bewerk deze afbeelding";
-        $jumbo = file_get_contents("templates/jumbotron.html");
-        $jumbo = str_replace("@citytitle@", $title, $jumbo);
-        $jumbo = str_replace("@slogan@", '', $jumbo);
-        print $jumbo;
-
-    }
-
-}
 
 
+
+// functie om data uit de databank te mergen met een ander document
+// $template = een html bestand met variabelen in
+// $data = data van databank dat de variabelen opvuld van je template
 function MergeViewWithData( $template, $data )
 {
     $returnvalue = "";
@@ -40,6 +38,7 @@ function MergeViewWithData( $template, $data )
 
         foreach( array_keys($row) as $field )  //eerst "img_id", dan "img_title", ...
         {
+            //@$field@ is de naam van de table in databank, deze wordt hezelfde geschreven colums.html
             $output = str_replace( "@$field@", $row["$field"], $output );
         }
 

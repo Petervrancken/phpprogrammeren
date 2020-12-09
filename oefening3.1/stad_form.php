@@ -6,7 +6,7 @@ require_once "lib/html_fucntion.php";
 
 
 PrintHead();
-PrintJumbo();
+PrintJumbo( $title = "Bewerk afbeelding", $subtitle = "" );
 
 ?>
 
