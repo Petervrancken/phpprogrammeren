@@ -48,7 +48,7 @@ function SaveFormData()
         //extend SQL with WHERE
         $sql .= $where;
 
-        //run SQL
+        //run SQL staat in connectie met functie in pdo.php
         $result = ExecuteSQL($sql);
 
         //output if not redirected
@@ -57,9 +57,9 @@ function SaveFormData()
         print $result->rowCount() . " records affected";
 
         //redirect after insert or update
-        /*
+
         if ( $insert AND $_POST["afterinsert"] > "" ) header("Location: ../" . $_POST["afterinsert"] );
         if ( $update AND $_POST["afterupdate"] > "" ) header("Location: ../" . $_POST["afterupdate"] );
-        */
+
     }
 }
