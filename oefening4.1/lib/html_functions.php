@@ -5,6 +5,12 @@ function PrintHead()
     print $head;
 }
 
+function PrintNavbar()
+{
+    $head = file_get_contents("templates/navbar.html");
+    print $head;
+}
+
 function PrintJumbo( $title = "", $subtitle = "" )
 {
     $jumbo = file_get_contents("templates/jumbo.html");

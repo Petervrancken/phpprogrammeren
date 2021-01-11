@@ -6,8 +6,12 @@ ini_set( 'display_errors', 1 );
 require_once "lib/autoload.php";
 
 PrintHead();
+?>
+<div class="container">
+<?php
 PrintJumbo( $title = "City Dreams" ,
     $subtitle = "Find the location you always dreamed off!" );
+PrintNavbar();
 ?>
 
 <div class="container">
@@ -29,4 +33,5 @@ PrintJumbo( $title = "City Dreams" ,
 </div>
 
 </body>
+</div>
 </html>
