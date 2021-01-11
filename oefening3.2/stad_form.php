@@ -1,7 +1,7 @@
 <?php
 
 require_once "lib/pdo.php";
-require_once "lib/html_fucntion.php";
+require_once "lib/html_functions.php";
 
 
 

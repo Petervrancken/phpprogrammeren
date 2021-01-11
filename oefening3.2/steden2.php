@@ -4,8 +4,8 @@
 // haal gegevens van pdo.php
 require_once "lib/pdo.php";
 
-//haal gegevens van html_fucntion.php
-require_once "lib/html_fucntion.php";
+//haal gegevens van html_functions.php
+require_once "lib/html_functions.php";
 
 
 

@@ -1,12 +1,7 @@
 <?php
-
-require_once "pdo.php";
-
-
+require_once "autoload.php";
 
 SaveFormData();
-
-
 
 function SaveFormData()
 {
