@@ -6,8 +6,8 @@ ini_set( 'display_errors', 1 );
 require_once "lib/autoload.php";
 
 PrintHead();
-PrintJumbo( $title = "Leuke plekken in Europa" ,
-    $subtitle = "Tips voor citytrips voor vrolijke vakantiegangers!" );
+PrintJumbo( $title = "City Dreams" ,
+    $subtitle = "Find the location you always dreamed off!" );
 ?>
 
 <div class="container">
