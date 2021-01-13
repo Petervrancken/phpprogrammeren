@@ -25,10 +25,14 @@ function SaveFormData()
 
         $table = $_POST['table'];
         $pkey = $_POST['pkey'];
+        $email = $_POST['usr_email'];
+        $password = $_POST['usr_password'];
 
         //validation
         $sending_form_uri = $_SERVER['HTTP_REFERER'];
         CompareWithDatabase( $table, $pkey );
+        ValidateUsrEmail($email);
+        ValidateUsrPassword($password);
 
         //terugkeren naar afzender als er een fout is
         if ( count($_SESSION['errors']) > 0 ) { header( "Location: " . $sending_form_uri ); exit(); }

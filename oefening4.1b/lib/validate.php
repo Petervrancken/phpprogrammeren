@@ -11,6 +11,7 @@ function CompareWithDatabase( $table, $pkey ): void
         //haal veldnaam en veldtype uit de databank
         $fieldname = $row['Field']; //bv. img_title
         $can_be_null = $row['Null']; //bv. NO / YES
+        $email = $row['usr_email'];
 
         list( $type, $length, $precision ) = GetFieldType( $row['Type'] );
 
@@ -70,10 +71,37 @@ function CompareWithDatabase( $table, $pkey ): void
                 }
             }
 
+
+
+
+            ///// hier zit ik mee vast!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            if ($_POST[$fieldname] == "usr_password"){
+                $msg = $sent_value . " Bedankt voor uw registratie!";
+                $_SESSION['msgs'][ "$fieldname" . "_msgs"] = $msg;
+            }
+
+
+
+
+
             //other types ...
         }
     }
 }
+// work in progress !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+function ValidateUsrPassword($password){
+    if( strlen("$password") < 5 ){
+        return "Password is to short";
+    }
+}
+function ValidateUsrEmail($email){
+    if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        return ("$email is a valid email address");
+    } else {
+        return ("$email is not a valid email address");
+    }
+}
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 function isInt($value) {
     return is_numeric($value) && floatval(intval($value)) === floatval($value);
