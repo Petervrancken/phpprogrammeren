@@ -45,8 +45,13 @@ function SaveFormData()
 
         foreach ( $_POST as $field => $value )
         {
+
             //skip non-data fields
             if ( in_array( $field, [ 'table', 'pkey', 'afterinsert', 'afterupdate', 'csrf' ] ) ) continue;
+
+            if ($field == 'usr_password'){
+                $value = password_hash($value, PASSWORD_DEFAULT);
+            }
 
             //handle primary key field
             if ( $field == $pkey )
