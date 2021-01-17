@@ -15,9 +15,16 @@ PrintNavbar();
 ?>
 
 <div class="container">
+    <?php
+    // hier plaats je de het bericht als je hebt geregistreerd.
+    foreach ( $msgs as $msg){
+        print '<div class="msgs alert alert-success" role="alert">' . $msg . '</div>';
+    }
+    ?>
     <div class="row">
 
         <?php
+        // hier plaats je de het bericht als je hebt geregistreerd.
         //get data
         $data = GetData( "select * from images" );
 

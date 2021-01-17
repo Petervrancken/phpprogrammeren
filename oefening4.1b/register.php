@@ -12,11 +12,19 @@ PrintJumbo( $title = "Registratie", $subtitle = "" );
     <div class="row">
 
         <?php
-        //if ( ! is_numeric( $_GET['img_id']) ) die("Ongeldig argument " . $_GET['img_id'] . " opgegeven");
+        if ( count($old_post) > 0 )
+        {
+            $data = [ 0 => [
+                "usr_voornaam" => $old_post['usr_voornaam'],
+                "usr_naam" => $old_post['usr_naam'],
+                "usr_email" => $old_post['usr_email'],
+                "usr_password" => $old_post['usr_password']
+            ]
+            ];
+        }
 
         //get data
         $data = [ 0 => [ "usr_voornaam" => "", "usr_naam" => "", "usr_email" => "", "usr_password" => "" ]];
-        $row = $data[0]; //there's only 1 row in data
 
         //add extra elements
         $extra_elements['csrf_token'] = GenerateCSRF( "register.php"  );

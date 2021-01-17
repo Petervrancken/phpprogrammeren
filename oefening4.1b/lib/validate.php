@@ -1,3 +1,4 @@
+
 <?php
 require_once "autoload.php";
 
@@ -11,7 +12,6 @@ function CompareWithDatabase( $table, $pkey ): void
         //haal veldnaam en veldtype uit de databank
         $fieldname = $row['Field']; //bv. img_title
         $can_be_null = $row['Null']; //bv. NO / YES
-        $email = $row['usr_email'];
 
         list( $type, $length, $precision ) = GetFieldType( $row['Type'] );
 
@@ -71,37 +71,48 @@ function CompareWithDatabase( $table, $pkey ): void
                 }
             }
 
-
-
-
-            ///// hier zit ik mee vast!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            if ($_POST[$fieldname] == "usr_password"){
-                $msg = $sent_value . " Bedankt voor uw registratie!";
-                $_SESSION['msgs'][ "$fieldname" . "_msgs"] = $msg;
-            }
-
-
-
-
-
             //other types ...
         }
     }
 }
-// work in progress !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-function ValidateUsrPassword($password){
-    if( strlen("$password") < 5 ){
-        return "Password is to short";
+
+function ValidateUsrPassword( $password )
+{
+    if ( strlen($password) < 8 )
+    {
+        $_SESSION['errors']['usr_password_error'] = "Het wachtwoord moet minstens 8 tekens bevatten";
+        return false;
+    }
+
+    return true;
+}
+
+function ValidateUsrEmail( $email )
+{
+    if ( filter_var( $email, FILTER_VALIDATE_EMAIL ) )
+    {
+        return true;
+    }
+    else
+    {
+        $_SESSION['errors']['usr_email_error'] = "Geen geldig e-mailadres!";
+        return false;
     }
 }
-function ValidateUsrEmail($email){
-    if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        return ("$email is a valid email address");
-    } else {
-        return ("$email is not a valid email address");
+
+function CheckUniqueUsrEmail( $email )
+{
+    $sql = "SELECT * FROM user WHERE usr_email='" . $email . "'";
+    $rows = GetData($sql);
+
+    if (count($rows) > 0)
+    {
+        $_SESSION['errors']['usr_email_error'] = "Er bestaat al een gebruiker met dit e-mailadres";
+        return false;
     }
+
+    return true;
 }
-// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 function isInt($value) {
     return is_numeric($value) && floatval(intval($value)) === floatval($value);
