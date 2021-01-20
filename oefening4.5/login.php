@@ -14,6 +14,9 @@ PrintJumbo( $title = "Login", $subtitle = "" );
     <div class="row">
 
         <?php
+        foreach ( $msgs as $msg){
+            print '<div class="msgs alert alert-success" role="alert">' . $msg . '</div>';
+        }
 
         //get data
         $data = [ 0 => [ "usr_email" => "", "usr_password" => "" ]];
