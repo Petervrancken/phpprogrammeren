@@ -5,11 +5,21 @@ function PrintHead()
     print $head;
 }
 
+
+
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 function PrintNavbar()
 {
+
     $head = file_get_contents("templates/navbar.html");
+    $name = $_SESSION['user']['usr_voornaam'];
+    $head = str_replace( "@nav_name@", $name, $head );
+
     print $head;
 }
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
 
 function PrintJumbo( $title = "", $subtitle = "" )
 {
