@@ -10,7 +10,7 @@ $_SESSION['user']=[];
 session_start();
 session_destroy();
 session_regenerate_id();
-$_SESSION['msgs'][] = "U bent uitgelogd!";
+$_SESSION['msgs'][] = "U bent uitgelogd!";/// vraag over dit, waarom werkt dit niet? Geeft msgs aan met nieuwe tekst maar geeft niet door naar foreach in login.
 header("Location: login.php"); exit;
 
 
